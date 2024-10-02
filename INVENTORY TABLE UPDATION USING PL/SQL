@@ -1,0 +1,33 @@
+create table inventory(prono number(3) primary key,proname varchar2(25),rate
+number(8,2))
+
+
+desc inventory;
+
+
+insert into inventory values(&Prono,'&Proname',&Rate);
+
+
+select * from inventory;
+
+
+ ed up_rate;
+
+
+@up_rate;
+
+
+ select * from inventory;
+
+
+alter table inventory add no_of_item number(3);
+
+
+update inventory set no_of_item =&no_of_item where prono=&prono;
+
+
+ select * from inventory;
+
+
+
+commit;
