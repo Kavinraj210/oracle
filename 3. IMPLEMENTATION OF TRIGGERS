@@ -1,0 +1,52 @@
+create table inventory_master(prono number(4) primary key, proname
+2 varchar2(30),rate number(8,2),avail_qty number(4));
+
+
+create table inventory_trans(prono number(4) references inventory_master(prono)
+2 purchase_date date,pur_qty number(4));
+
+
+
+ed trigger1
+Create or replace trigger inv_master_trigger
+Before insert or update on inventory_master for each row
+Begin
+If(:new.rate<=0)then
+Raise_application_error(-20001,’invalid rate value’);
+End if;
+End;
+
+
+@trigger1
+
+
+insert into inventory_master values(&prono,’&proname’,&rate,&avail_qty);
+
+
+select * from inventory_master
+
+
+edit trigger2
+Create or replace trigger inv_trans_trigger
+Before insert or update on inventory_trans for each row
+Begin
+If(:new.pur_rate<=0)then
+Raise_application_error(-20001,’invalid purchase quantity’);
+End if;
+End;
+
+
+
+ @ trigger2
+
+
+insert into inventory_trans values(&prono,’&purchase_date’,&pur_qty);
+
+
+select * from inventory_tans;
+
+
+commit;
+
+
+exit
