@@ -1,0 +1,41 @@
+create table employee(emp_no number(3) primary key, name varchar2(30),
+designation varchar2(30), gender varchar2(7), age number(3), date_of_joining date, salary
+number(6));
+
+
+desc employee;
+
+
+nsert into employee values(&emp_no , '&name' , '&designation' , '&gender' ,
+&age , '&date_of_joining' , &salary);
+
+set linesize 200;
+
+select * from employee;
+
+
+ select * from employee where gender = 'male';
+ 
+
+ select * from employee where gender='female' and salary < 20000;
+
+
+ select emp_no, name, designation from employee order by name desc;
+
+
+ select emp_no,name,designation from employee order by name;
+
+
+ select emp_no,name,designation from employee order by name;
+
+
+ select * from employee where gender = 'male' and salary > 20000
+2 union
+3 select * from employee where gender = 'female' and salary < 20000;
+
+
+select min(salary) MINIMUM_SALARY , max(salary) MAXIMUM_SALARY,
+2 avg(salary) AVERAGE_SALARY from employee;
+
+
+commit;
